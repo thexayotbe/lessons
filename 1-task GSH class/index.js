@@ -1,10 +1,12 @@
 const api = "https://greenshop.abduvoitov.com/api";
 const accessToken = "6584927fc28f2c4ab0c9123d";
 
-const bodyChecker = (value) => {
-  let result = "Please enter ";
-  for (const key in value) result += ` ${key}`;
-  return result;
+bodyChecker = async (value) => {
+  let result = "Please enter";
+  for (const key in value) if (!value[key]) result += ` ${key}`;
+  if (result === "Please enter") return null;
+
+  throw new Error(result);
 };
 
 class User {
@@ -12,7 +14,7 @@ class User {
     this.email = "example@gmail.com";
   }
   async signup(data) {
-    bodyChecker(data);
+    await bodyChecker(data);
     const { name, surname, password, email } = data;
     const response = await fetch(
       `${api}/user/sign-up?access_token=${accessToken}`,
@@ -33,7 +35,7 @@ class User {
     return await response.json();
   }
   async signin(data) {
-    bodyChecker(data);
+    await bodyChecker(data);
     const { password, email } = data;
     const response = await fetch(
       `${api}/user/sign-in?access_token=${accessToken}`,
@@ -65,7 +67,7 @@ class User {
   }
 
   async delete_wishlist(_id) {
-    bodyChecker(_id);
+    await bodyChecker(_id);
 
     const response = await fetch(
       `${api}/user/wishlist?access_token=${accessToken}`,
@@ -90,12 +92,11 @@ class User {
 const user = new User();
 
 user
-  .signin({ email: "mamajonovhayot300@gmail.com", password: "Xayotbek2007" })
+  .signin({ email: "mamajonovhayot300@gmail.com", password: "" })
   .then((data) => {
-    // this.wishlist = data.data.user.wishlist;
-    // console.log(this.wishlist);
     console.log(data);
-  });
+  })
+  .catch((err) => console.log(err.message));
 
 // user
 //   .signup({

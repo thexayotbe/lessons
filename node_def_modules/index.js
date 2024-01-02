@@ -33,11 +33,66 @@ const os = require("os");
 //   (err) => console.log(err)
 // );
 
-console.log(os.platform());
-console.log(os.arch());
-console.log(os.cpus());
-console.log(os.totalmem());
-console.log(os.freemem());
-console.log(os.uptime());
-console.log(os.hostname());
-console.log(os.networkInterfaces());
+// console.log(os.platform());
+// console.log(os.arch());
+// console.log(os.cpus());
+// console.log(os.totalmem());
+// console.log(os.freemem());
+// console.log(os.uptime());
+// console.log(os.hostname());
+// console.log(os.networkInterfaces());
+
+// ! _url module
+
+// const url = require("url");
+// console.log(url.parse("https://www.scriblify.me/?s=salom&range=10"));
+
+// const url = new URL("https://www.scriblify.me/?s=salom&range=10");
+
+// console.log(url.href);
+// console.log(url.host);
+// console.log(url.search);
+// console.log(url.searchParams);
+
+// const params = url.searchParams;
+
+// params.append("current", 2);
+// params.delete("range");
+
+// console.log(params);
+
+// console.log();
+
+// ! event-emmiter module
+
+// const EventEmmiter = require("events");
+
+// const emitter = new EventEmmiter();
+
+// emitter.once("message", () => {
+//   console.log("Hello someone has sent a message to someone");
+// });
+
+// console.log(emitter.eventNames());
+// emitter.emit("message");
+// console.log(emitter.eventNames());
+
+// ! http module
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  // fs.readFile(path.join(__dirname, "index.html"), "utf8", (err, data) => {
+  //   res.writeHead(200, {
+  //     "Content-Type": "text/html ",
+  //   });
+  //   res.end(data);
+  // });
+  res.writeHead(200, {
+    "Content-Type": "application/json ",
+  });
+  res.end(JSON.stringify({ name: "Xayotbek" }));
+});
+
+server.listen(3000, () => {
+  console.log("Server is running on http://localhost:3000");
+});

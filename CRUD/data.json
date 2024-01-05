@@ -1,1 +1,9 @@
-[{"name":"Diyor","surname":"Mamajonov","city":"Namangan","id":2},{"name":"Diyor","surname":"Mamajonov","city":"Namangan","id":"7af3361b-c196-41ba-8ef3-cae077f3e254"}]
+[
+  { "name": "Diyor", "surname": "Mamajonov", "city": "Namangan", "id": 2 },
+  {
+    "name": "Diyor",
+    "surname": "Mamajonov",
+    "city": "Namangan",
+    "id": "7af3361b-c196-41ba-8ef3-cae077f3e254"
+  }
+]

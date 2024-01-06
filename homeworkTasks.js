@@ -64,3 +64,29 @@ const findHappyNumberv2 = (num) => {
   return `Happy number: ${happyNumbers[happyNumbers.length - 1]}`;
 };
 console.log(findHappyNumberv2(1223454778888888));
+
+const bodyHandler = (data, required) => {
+  let result = "Please enter ";
+  required.map((value) =>
+    Object.keys(data).includes(value) ? value : (result += ` ${value}`)
+  );
+
+  if (result === "Please enter ") return null;
+
+  throw new Error(result);
+};
+
+console.log();
+
+try {
+  bodyHandler(
+    {
+      name: "Xayotbek",
+      surname: "Mamajonov",
+      city: "",
+    },
+    ["name", "surname", "city"]
+  );
+} catch (error) {
+  console.log(error);
+}

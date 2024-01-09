@@ -46,7 +46,6 @@ module.exports = class User {
       try {
         const data = await retrieveBody(req);
         await bodyHandler(data, ["name", "surname", "city"]);
-
         const createdData = {
           ...JSON.parse(data),
           id: uuid.v4(),

@@ -2,21 +2,6 @@ const express = require("express");
 const uuid = require("uuid");
 const fs = require("fs");
 let user_data = require("./lib/data.json");
-const retrieveBody = (req) => {
-  return new Promise((resolve, reject) => {
-    try {
-      let body = "";
-      req.on("data", (chunk) => {
-        body += chunk.toString();
-      });
-      req.on("end", () => {
-        resolve(body);
-      });
-    } catch (error) {
-      reject(error);
-    }
-  });
-};
 
 const bodyHandler = async (data, required) => {
   let result = "Please enter";

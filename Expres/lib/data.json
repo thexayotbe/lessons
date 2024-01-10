@@ -1,14 +1,1 @@
-[
-  {
-    "_id": "0d596a75-f04d-4e67-96ba-d5d200ffd9b0",
-    "name": "Xayotbek",
-    "surname": "Mamajonov",
-    "city": "Namangan"
-  },
-  {
-    "_id": "1d3e6ecd-f8e6-446f-9342-efcb616b9f29",
-    "name": "Xayotbek",
-    "surname": "Mamajonov",
-    "city": "Namangan"
-  }
-]
+[{"_id":"0d596a75-f04d-4e67-96ba-d5d200ffd9b0","name":"Xayotbek","surname":"Mamajonov","city":"Namangan"},{"_id":"1d3e6ecd-f8e6-446f-9342-efcb616b9f29","name":"Xayotbek","surname":"Mamajonov","city":"Namangan"},{"_id":"20549bce-63af-4d00-9f3e-312747e91c31","name":"Xayotbek","surname":"Mamajonov","city":"Namangan"}]

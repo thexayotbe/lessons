@@ -8,4 +8,4 @@ router.use("/user", require("./user"));
 
 // Admin
 router.use("/admin", require("./admin"));
-module.exports = router;
+module.exports = { router };

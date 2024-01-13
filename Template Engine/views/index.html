@@ -1,0 +1,22 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Hello from home page</h1>
+    <h1>Name : {{person.name}}</h1>
+    <h1>surame: {{person.surname}}</h1>
+    <h1>phoneNumber: {{person.phoneNumber}}</h1>
+    {{#each vages as |value key|}}
+    <ul>
+      {{#each value.skills}} {{log .}}
+      <li>{{.}}</li>
+      {{/each}}
+    </ul>
+
+    {{/each}}
+  </body>
+</html>

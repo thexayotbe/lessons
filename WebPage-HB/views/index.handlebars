@@ -1,0 +1,189 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="logo">
+          <img src="./logo.svg" alt="" />
+          Building
+        </div>
+        <ul>
+          <li>Home</li>
+          <li>Service</li>
+          <li>About US</li>
+          <li>Properties</li>
+          <li>Contact</li>
+          <button>Log In</button>
+        </ul>
+      </div>
+    </div>
+    <div class="main">
+      <div class="gradient"></div>
+      <div class="main-text">
+        <h3>Find Your Drem House</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra
+          posuere sem purus enim eleifend habitant arcu, sed.</p>
+      </div>
+
+      <div class="search">
+        {{#each searchData}}
+          <div class="item {{this.type}}">
+            <p class="subtitle">{{this.subtitle}}
+              <img src="./down.svg" alt="" /></p>
+            <h3 class="title" id={{this.type}}>{{this.title}}</h3>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="about">
+      <div class="about-inner">
+        <div class="about-img">
+          <img src="ab1.png" alt="" />
+          <img src="ab2.png" alt="" />
+        </div>
+        <div class="about-text">
+          <h4>About US</h4>
+          <h3>We are Specializing in interior Improvments</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra
+            posuere sem purus enim eleifend habitant arcu, sed.</p>
+          <div class="about-cards">
+            {{#each aboutCards}}
+              <div class="about-card">
+                <img src="{{this.icon}}" alt="" />
+                <h3>{{this.title}}</h3>
+                <p>{{this.text}}</p>
+              </div>
+            {{/each}}
+          </div>
+          <button>Explore Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="types">
+      <div class="types-inner">
+        <h3>What are you looking for?</h3>
+        <div class="types-img">
+          <img src="/building.png" alt="" />
+        </div>
+        <div class="types-items">
+          {{#each typeCards}}
+            <div class="type-card">
+              <img src="{{this.icon}}" alt="" />
+              <div class="text">
+                <h3>{{this.title}}</h3>
+                <p>{{this.text}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="places">
+      <div class="places-inner">
+        <h3>Most Popular Places</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="cities">
+          {{#each cities}}
+            <div class="city">
+              <img src="{{this.img}}" alt="" />
+              <div class="info">
+                <h3>{{this.name}}</h3>
+                <p>{{this.info}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="us">
+      <div class="us-inner">
+        <div class="us-text">
+          <h3>Who Choose Us?</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio
+            laoreet sit neque sagittis. Gravida viverra at auctor sed aliquam.
+            Sed magna eros lectus amet, viverra. Ultrices diam, volutpat sit ut
+            feugiat semper interdum dapibus. Et malesuada tempus lacus at ornare
+            gravida ornare nulla dui. Velit tellus elit consectetur dui vel
+            convallis eu in lectus. Vitae id est, suspendisse suspendisse.</p>
+          <button>Read more</button>
+        </div>
+        <div class="us-img">
+          <img src="./people1.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="testimonals">
+      <div class="testimonals-inner">
+        <h3>What People Say </h3>
+        <p> Lorem ipsum dolor sit amet, consectetur </p>\
+        <div class="items">
+          {{#each testimonals}}
+            <div class="tes-item">
+              <img src="{{this.img}}" alt="" />
+              <h3>{{this.name}}</h3>
+              <img src="{{this.star}}" alt="" />
+              <p>{{this.text}} </p>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-inner">
+        <div class="subsc">
+          <h3>
+            For Daily Update Subscribe Now
+          </h3>
+          <div class="text">
+            <input type="text" placeholder="Enter Your Mail.." />
+            <button>Subscribe</button>
+          </div>
+        </div>
+
+        <div class="footer-menu">
+          <div class="main-side">
+            <h3> <img src="./logo.svg" alt="" />Building</h3>
+            <p>Lorem ipsum dolor sit amet, consectet adipiscing elit. Quam
+              turpis sed ut fam tortor pharetra. Lorem auctor congue
+              pellentesque facilisis diam</p>
+            <div class="icons">
+              {{#each socialIcons}}
+                <img src="{{this}}" alt="" />
+              {{/each}}
+
+            </div>
+          </div>
+          <div class="footer-links">
+
+            {{#each footer}}
+              <div class="menu-item">
+                <h3>{{this.title}}</h3>
+                <ul>
+                  {{#if this.iconsHl}}
+                    {{#each this.links}}
+
+                      <li><img src="{{lookup this 0}}" alt="" />
+                        {{lookup this 1}}
+                      </li>
+
+                    {{/each}}
+                  {{else}}
+                    {{#each this.links as |value key|}}
+                      <li><img src="{{lookup value 0}}" alt="" />
+                        {{value}}
+                      </li>{{/each}}
+                  {{/if}}
+                </ul>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First app</title>
+  </head>
+
+  <body>
+    <h1>Hello from me</h1>
+
+    <%= name %> <%= surname %> <% for( let index = 0; index < listVeg.length;
+    index++ ) { %>
+    <h1><%=listVeg[index]%></h1>
+
+    <% } %> <% listVeg.map((veget)=>{ %>
+    <h1><%= veget%></h1>
+    <%}) %>
+    <h1>show</h1>
+
+    <% switch (name){ case "Jane" :%> your name is Jane <% break; case "Jake":
+    %> Your name is Jake <% break; default: break; } %> <%-
+    include('partials/header')%>
+  </body>
+</html>

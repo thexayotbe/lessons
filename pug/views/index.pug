@@ -1,0 +1,53 @@
+mixin comment(item)
+    div.container
+        div.author= item.author 
+        div.text= item.text 
+        div.date= item.date
+
+doctype html
+html
+    head 
+        link(rel="stylesheet" href="./styles/main.css")
+        title= title
+        style. 
+            h1{
+                color :pink
+            }
+    body
+        include includes/notifier
+
+        h1 This is heading one
+        p#text1  hello world
+        p.text
+        -const classes = ["class1", "class2", "class3"]
+        input(type= "password" disabled  = `${true?true: false}` class = classes)
+        - console.log("22")
+
+        each value, index in listVeg 
+            h1= value
+
+        each value, key in person 
+            h3= value
+            p=key
+
+        if isShow
+            h1 Showing 
+        else 
+            h1 Showing not
+
+        case orderStatus 
+            when "Pending"
+                p Your order Pending 
+            when "In-Transit"
+                p Your order In-Transit 
+            when "Completed"
+                p Your order completed!
+            default 
+                p No info
+
+        -const comment_item = {author:"Xayotbek", text:"Hello World!", date:"18.01.2024"}
+        +comment(comment_item)
+        +comment(comment_item)
+        +comment(comment_item)
+        +comment(comment_item)
+        +comment(comment_item)

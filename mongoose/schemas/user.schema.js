@@ -1,7 +1,14 @@
 const { Schema, default: mongoose } = require("mongoose");
 
 const userSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    // required: true,
+    // lowercase: true,
+    // uppercase: true,
+    // minLength: 10,
+    // maxLength: 255,
+  },
   surname: String,
 });
 

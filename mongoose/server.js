@@ -5,13 +5,20 @@ const migrantModel = require("./schemas/migrant.schema");
 const app = express();
 
 app.get("/", async (req, res) => {
-  await userModel.create({
-    name: 123,
-    surname: "John",
-  });
+  // await migrantModel.create({
+  //   name: "Doe",
+  //   surname: "John",
+  //   age: 23,
+  // });
+
+  const migrant = await migrantModel.findById("65bf6dff70b0e54107446ac8");
+  const xMigr = await migrantModel.findX();
+  console.log(xMigr);
+  console.log(migrant.fullName());
+
   res.status(200).json({
     message: "Working",
-    users: await userModel.find(),
+    users: await userModel.findById("65be175a3dbfe2864a67413e"),
     migrants: await migrantModel.find(),
   });
 });
@@ -22,6 +29,6 @@ app.listen(8080, async () => {
   console.log(await userModel.find());
   console.log(await migrantModel.find());
   console.log(
-    " Connection established and listening on port http://localhost:8080"
+    "Connection established and listening on port http://localhost:8080"
   );
 });

@@ -28,7 +28,5 @@ app.listen(8080, async () => {
 
   console.log(await userModel.find());
   console.log(await migrantModel.find());
-  console.log(
-    "Connection established and listening on port http://localhost:8080"
-  );
+  console.log("Connection established listening on port http://localhost:8080");
 });

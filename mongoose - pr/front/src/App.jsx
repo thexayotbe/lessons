@@ -1,25 +1,59 @@
-import { Button, Card, Form, Input, Select, Tabs } from "antd";
+import { Button, Card, Form, Input, Modal, Select, Tabs } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 const App = () => {
   const [data, setData] = useState([]);
   const [type, setType] = useState("gardening");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editData, setEditData] = useState({});
+  const getEditData = (_id) => {
+    setEditData(data.filter((value) => value._id == _id)[0]);
+    setIsModalOpen(true);
+  };
+  const changeEditData = (e) => {
+    setEditData({
+      ...editData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   useEffect(() => {
     axios({
       url: `http://localhost:8080/${type}`,
     }).then((response) => {
-      console.log(response.data.data);
       setData(response.data.data);
     });
   }, [type]);
-
   const onFinish = async (e) => {
     await axios({
       url: `http://localhost:8080/${type}`,
       method: "POST",
       data: e,
     });
+  };
+  const deleteOne = async (_id) => {
+    await axios({
+      url: `http://localhost:8080/${type}/${_id}`,
+      method: "DELETE",
+    });
+    setData(data.filter((value) => value._id != _id));
+  };
+  const updateOne = async () => {
+    await axios({
+      url: `http://localhost:8080/${type}/${editData._id}`,
+      method: "PUT",
+      data: editData,
+    });
+    setData(
+      data.map((value) => (value._id == editData._id ? editData : value))
+    );
+    setIsModalOpen(false);
   };
   const items = [
     {
@@ -59,9 +93,18 @@ const App = () => {
             {data.map(({ image, title, description, _id }) => {
               return (
                 <Card key={_id} title="Default size card">
-                  <img src={image} alt="" style={{ width: "100px" }} />
+                  <img src={image} alt="" style={{ width: "100%" }} />
                   <p>{title}</p>
                   <p>{description}</p>
+                  <div style={{ width: "100px", display: "flex", gap: "30px" }}>
+                    {" "}
+                    <Button danger onClick={() => deleteOne(_id)}>
+                      Delete
+                    </Button>
+                    <Button type="primary" onClick={() => getEditData(_id)}>
+                      Edit
+                    </Button>
+                  </div>
                 </Card>
               );
             })}
@@ -167,6 +210,85 @@ const App = () => {
   ];
   return (
     <div>
+      <Modal
+        footer={false}
+        title="Basic Modal"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}>
+        <Form
+          onFinish={updateOne}
+          name="basic"
+          labelCol={{
+            span: 8,
+          }}
+          wrapperCol={{
+            span: 16,
+          }}
+          style={{
+            maxWidth: 600,
+          }}
+          initialValues={{
+            remember: true,
+          }}
+          autoComplete="off">
+          <Form.Item
+            label="Image"
+            name="image"
+            rules={[
+              {
+                required: true,
+                message: "Please input your image!",
+              },
+            ]}>
+            <Input
+              defaultValue={editData.image}
+              onChange={changeEditData}
+              name="image"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Title"
+            name="title"
+            rules={[
+              {
+                required: true,
+                message: "Please input your title!",
+              },
+            ]}>
+            <Input
+              defaultValue={editData.title}
+              onChange={changeEditData}
+              name="title"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Description"
+            name="description"
+            rules={[
+              {
+                required: true,
+                message: "Please input your Description!",
+              },
+            ]}>
+            <Input
+              name="description"
+              defaultValue={editData.description}
+              onChange={changeEditData}
+            />
+          </Form.Item>
+
+          <Form.Item
+            wrapperCol={{
+              offset: 8,
+              span: 16,
+            }}>
+            <Button type="primary" htmlType="submit">
+              Edit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
       <Tabs defaultActiveKey="1" items={items} />
     </div>
   );

@@ -19,6 +19,24 @@ router.post("/gardening", async (req, res) => {
   });
 });
 
+router.delete("/gardening/:_id", async (req, res) => {
+  const { _id } = req.params;
+  await gardeningModule.deleteOne({ _id });
+  return res.status(201).json({
+    message: "success",
+  });
+});
+
+router.put("/gardening/:_id", async (req, res) => {
+  const { _id } = req.params;
+  const data = req.body;
+  console.log(data, _id);
+  await gardeningModule.replaceOne({ _id }, { ...data });
+  return res.status(201).json({
+    message: "success",
+  });
+});
+
 // home pot
 router.get("/homepot", async (req, res) => {
   return res.status(200).json({

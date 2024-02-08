@@ -1,10 +1,10 @@
 import { Button, Form, Input, Select } from "antd";
 import React from "react";
 
-const index = ({ type }) => {
+const FormComponent = ({ setType }) => {
   const onFinish = async (e) => {
     await axios({
-      url: `http://localhost:8080/${type}`,
+      url: `http://localhost:8080/plants`,
       method: "POST",
       data: e,
     });
@@ -100,4 +100,4 @@ const index = ({ type }) => {
   );
 };
 
-export default index;
+export default FormComponent;

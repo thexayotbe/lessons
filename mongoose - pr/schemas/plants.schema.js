@@ -1,6 +1,6 @@
 const { Schema, default: mongoose } = require("mongoose");
 
-const gardeningSchema = new Schema({
+const plantsModule = new Schema({
   image: {
     type: String,
     required: true,
@@ -19,4 +19,4 @@ const gardeningSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("gardening", gardeningSchema);
+module.exports = mongoose.model("plants", plantsModule);

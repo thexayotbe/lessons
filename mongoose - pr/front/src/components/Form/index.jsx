@@ -1,17 +1,15 @@
 import { Button, Form, Input, Select } from "antd";
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
-const FormComponent = ({ setType }) => {
-  const onFinish = async (e) => {
-    await axios({
-      url: `http://localhost:8080/plants`,
-      method: "POST",
-      data: e,
-    });
+const FormComponent = ({ onFinish }) => {
+  const [type, setType] = useState("gardening");
+  const addData = (e) => {
+    onFinish(e, type);
   };
   return (
     <Form
-      onFinish={onFinish}
+      onFinish={addData}
       name="basic"
       labelCol={{
         span: 8,

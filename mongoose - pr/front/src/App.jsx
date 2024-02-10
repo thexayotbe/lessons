@@ -23,10 +23,10 @@ const App = () => {
 
   const getData = () => {
     axios({
-      url: `http://localhost:8080/plants`,
+      url: `http://localhost:8080/flower/${type}`,
     }).then((response) => {
       console.log(response.data.data.filter((value) => value.type === type));
-      setData(response.data.data.filter((value) => value.type === type));
+      setData(response.data.data);
     });
   };
 
@@ -52,10 +52,17 @@ const App = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
+  const onFinish = async (e, type) => {
+    await axios({
+      url: `http://localhost:8080/flower/${type}`,
+      method: "POST",
+      data: e,
+    });
+    // console.log(e);
+  };
   const deleteOne = async (_id) => {
     await axios({
-      url: `http://localhost:8080/plants/${_id}`,
+      url: `http://localhost:8080/flower/${type}/${_id}`,
       method: "DELETE",
     });
     setData(data.filter((value) => value._id != _id));
@@ -63,7 +70,7 @@ const App = () => {
 
   const updateOne = async () => {
     await axios({
-      url: `http://localhost:8080/plants/${editData._id}`,
+      url: `http://localhost:8080/flower/${type}/${editData._id}`,
       method: "PUT",
       data: editData,
     });
@@ -73,11 +80,8 @@ const App = () => {
     setIsModalOpen(false);
   };
   const moveOne = async () => {
-    await axios({
-      url: `http://localhost:8080/plants/${movingData._id}`,
-      method: "PUT",
-      data: movingData,
-    });
+    await deleteOne(movingData._id);
+    await onFinish(movingData, movingData.type);
     getData();
     setIsModalMoveOpen(false);
   };
@@ -119,6 +123,7 @@ const App = () => {
             {data.map((value) => {
               return (
                 <CardItem
+                  key={value._id}
                   value={value}
                   deleteOne={deleteOne}
                   getEditData={getEditData}
@@ -135,7 +140,7 @@ const App = () => {
       label: "Actions",
       children: (
         <div>
-          <FormComponent setType />
+          <FormComponent onFinish={onFinish} />
         </div>
       ),
     },

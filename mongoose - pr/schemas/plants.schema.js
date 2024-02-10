@@ -16,7 +16,12 @@ const plantsModule = new Schema({
   type: {
     type: String,
     required: true,
+    enum: ["gardening", "domestic", "homepot"],
   },
 });
 
-module.exports = mongoose.model("plants", plantsModule);
+module.exports = {
+  gardening: mongoose.model("gardening", plantsModule),
+  domestic: mongoose.model("domestic", plantsModule),
+  homepot: mongoose.model("homepot", plantsModule),
+};

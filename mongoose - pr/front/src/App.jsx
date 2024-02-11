@@ -11,7 +11,6 @@ const App = () => {
   const [isModalMoveOpen, setIsModalMoveOpen] = useState(false);
   const [editData, setEditData] = useState({});
   const [movingData, setMovingData] = useState({});
-
   useEffect(() => {
     getData();
   }, [type]);
@@ -25,7 +24,6 @@ const App = () => {
     axios({
       url: `http://localhost:8080/flower/${type}`,
     }).then((response) => {
-      console.log(response.data.data.filter((value) => value.type === type));
       setData(response.data.data);
     });
   };
@@ -58,7 +56,6 @@ const App = () => {
       method: "POST",
       data: e,
     });
-    // console.log(e);
   };
   const deleteOne = async (_id) => {
     await axios({

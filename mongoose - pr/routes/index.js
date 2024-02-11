@@ -50,7 +50,6 @@ router.delete("/flower/:type/:_id", async (req, res) => {
     });
   }
 });
-
 router.put("/flower/:type/:_id", async (req, res) => {
   const { _id } = req.params;
   const data = req.body;

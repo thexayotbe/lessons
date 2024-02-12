@@ -5,7 +5,7 @@ const CardItem = ({ value, deleteOne, getEditData, getMoveData }) => {
   const { title, description, image, _id } = value;
   return (
     <Card key={_id} title={title}>
-      <img src={value.image} alt="" style={{ width: "100%" }} />
+      <img src={image} alt="" style={{ width: "100%" }} />
       <p>{description}</p>
       <div style={{ width: "100px", display: "flex", gap: "30px" }}>
         <Button danger onClick={() => deleteOne(_id)}>

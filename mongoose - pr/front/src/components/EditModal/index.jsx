@@ -90,5 +90,4 @@ const ModalEdit = ({
     </Modal>
   );
 };
-
 export default ModalEdit;

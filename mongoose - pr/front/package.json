@@ -2,6 +2,7 @@
   "name": "mongo-pr",
   "private": true,
   "version": "0.0.0",
+  "antd": "^5.14.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd": "^5.14.0",
+    "antd": "^5.14.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

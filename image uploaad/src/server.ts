@@ -18,5 +18,5 @@ app.listen(8080, async () => {
   await mongoose.connect(
     "mongodb+srv://mamajonovxayot0:Xayotbek2007@xayotbek.gau92x8.mongodb.net/user"
   );
-  console.log("listening on port http://localhost:8080");
+  console.log("listening  port http://localhost:8080");
 });

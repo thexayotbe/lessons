@@ -18,7 +18,6 @@ function ImageUpload() {
       alert("Please select a file.");
       return;
     }
-
     const formData = new FormData();
     formData.append("file", file);
 
@@ -45,14 +44,17 @@ function ImageUpload() {
         <input type="file" onChange={handleFileChange} />
         <button onClick={handleUpload}>Upload</button>
       </div>
-      {images.map((image) => (
-        <div key={image._id}>
-          <img
-            src={"http://localhost:8080/image/" + image.image_source}
-            alt={image.id}
-          />
-        </div>
-      ))}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        {images.map((image) => (
+          <div key={image._id}>
+            <img
+              width={"300px"}
+              src={"http://localhost:8080/image/" + image.image_source}
+              alt={image.id}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

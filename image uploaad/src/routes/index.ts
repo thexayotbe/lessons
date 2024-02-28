@@ -50,7 +50,6 @@ router.post("/", upload.single("file"), async (req: Request, res: Response) => {
   //   if (err) throw new Error("Something went wrong");
   //   console.log("Image deleted successfully");
   // });
-
   return res.status(200).json({
     message: "Success",
     file: createdData,

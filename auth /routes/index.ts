@@ -3,7 +3,6 @@ import userModel from "../models";
 import jwt from "jsonwebtoken";
 
 const router = Router();
-
 router.get("/", async (req, res) => {
   const [, token] = String(req.headers.authorization).split(" ");
   try {

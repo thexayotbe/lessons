@@ -15,7 +15,6 @@ router.get("/", async (req, res) => {
         return res.status(403).json({ message: error });
       },
     );
-
     console.log(decoded);
     return res.status(200).json({
       data,

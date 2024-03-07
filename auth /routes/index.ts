@@ -7,7 +7,6 @@ router.get("/", async (req, res) => {
   const [, token] = String(req.headers.authorization).split(" ");
   try {
     const data = await userModel.find();
-
     const decoded = jwt.verify(
       token,
       String(process.env.JWT_SECRET),
@@ -19,7 +18,7 @@ router.get("/", async (req, res) => {
     return res.status(200).json({
       data,
     });
-  } catch (erroe) {}
+  } catch (error) {}
 });
 router.post("/login", (req, res) => {});
 router.post("/signup", async (req, res) => {

@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const path = require("path");
-
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -54,11 +53,9 @@ app.post("/login", async (req, res) => {
       email: data.email,
       id: data._id,
     };
-
     if (!data) return res.redirect("/register");
     if (data.password != password) return res.redirect("/register");
     console.log(data);
-
     res.redirect("dashboard");
   } catch (error) {
     console.log(error);
